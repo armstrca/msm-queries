@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get("/directors", { :controller => "director", :action => "index" })
 
-  get("/directors/#{params.fetch}", { :controller => "director", :action => "director" })
+  get("/directors/:director_id", { :controller => "director", :action => "show" })
 
   # get("movies/#{params.fetch}", { :controller => "movies", :action => "movie" })
 
