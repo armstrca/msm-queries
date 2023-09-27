@@ -5,14 +5,13 @@ class DirectorController < ApplicationController
   end
 
   def show
-    director_id = params.fetch("director_id")
+    @director_id = params.fetch("director_id")
 
-    @matching_directors = Director.where({ :id => director_id })
+    @matching_directors = Director.where({ :id => @director_id })
 
     @specific_director = @matching_directors.at(0)
 
-  
-    render({ :template => "misc_templates/director_details"})
+    render({ :template => "misc_templates/director_details" })
   end
   
 end
