@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   get("/", { :controller => "misc", :action => "homepage" })
 
-  get("/actors", { :controller => "actor", :action => "actor" })
+  get("/actors", { :controller => "actor", :action => "index" })
 
-  get("/directors", { :controller => "director", :action => "director" })
+  # get("/actors/#{params.fetch}", { :controller => "actor", :action => "actor" })
 
-  get("movies", { :controller => "movies", :action => "movies" })
+  get("/directors", { :controller => "director", :action => "index" })
+
+  get("/directors/#{params.fetch}", { :controller => "director", :action => "director" })
+
+  # get("movies/#{params.fetch}", { :controller => "movies", :action => "movie" })
 
   get("directors/youngest", { :controller => "director", :action => "youngest" })
 
