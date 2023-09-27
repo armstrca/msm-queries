@@ -7,7 +7,7 @@ class ActorController < ApplicationController
   def show
     @actor_id = params.fetch("actor_id")
 
-    @matching_actors = actor.where({ :id => @actor_id })
+    @matching_actors = Actor.where({ :id => @actor_id })
 
     @specific_actor = @matching_actors.at(0)
 
