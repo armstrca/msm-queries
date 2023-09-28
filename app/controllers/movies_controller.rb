@@ -1,17 +1,17 @@
 class MoviesController < ApplicationController 
 
   def index
-    render({ :template => "misc_templates/movies"})
+    render({ :template => "misc_templates/movies" })
   end
 
   def show
-    @movies_id = params.fetch("movies_id")
+    @movie_id = params.fetch("movie_id")
 
-    @matching_movies = Movies.where({ :id => @movies_id })
+    @matching_movie = Movie.where({ :id => @movie_id })
 
-    @specific_movies = @matching_moviess.at(0)
+    @specific_movie = @matching_movie.at(0)
 
-    render({ :template => "misc_templates/movies_details" })
+    render({ :template => "misc_templates/movie_details" })
   end
   
 end

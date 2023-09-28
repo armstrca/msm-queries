@@ -10,16 +10,20 @@
     <th></th>
   </tr>
 
-<% Movies.all.each do |a_movie| %>
-  <tr>
-    <td> <%= a_movie.id%> </td>
-    <td> 
-      <img src="<%= a_movie.image%>" width="200"> 
-    </td>
-    <td> <%= a_movie.name%> </td>
-    <td> <%= a_movie.dob%> </td>
-    <td> <a href="/movies/<%= a_movie.id %>">Show details</a> </td>
-  </tr>
-<% end %>
+  <% Movie.all.each do |a_movie| %>
+    <tr>
+      <td> <%= a_movie.id%> </td>
+      <td> 
+        <img src="<%= a_movie.image%>" width="200"> 
+      </td>
+      <td> <%= a_movie.title%> </td>
+      <td> <%= a_movie.year%> </td>
+      <td>
+         <% matching_records = Director.where({ :id => a_movie.director_id })  %>
+        <%= matching_records.at(0).name %> 
+      </td>
+      <td> <a href="/movies/<%= a_movie.id %>">Show details</a> </td>
+    </tr>
+  <% end %>
 
 </table>

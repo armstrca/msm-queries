@@ -24,6 +24,9 @@
   <dd><%= @specific_director.updated_at %></dd>
 </dl>
 
+
+<hr>
+
 <h2>Filmography</h2>  
 
 <% @matching_movies = Movie.where({ :director_id => @specific_director.id }) %>
