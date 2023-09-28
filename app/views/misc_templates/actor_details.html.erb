@@ -24,32 +24,40 @@
   <dd><%= @specific_actor.updated_at %></dd>
 </dl>
 
+<hr>
+
 <h2>Filmography</h2>  
 
-<% @matching_movies = Character.where({ :movie_id => @specific_actor.id }) %>
+<% @matching_characters = Character.where({ :actor_id => @specific_actor.id }) %>
 
-<!--
+
+
 <table border="1">
   <tr>
-    <th>ID</th>
-    <th>Image</th>
     <th>Title</th>
     <th>Year</th>
-    <th>actor</th>
+    <th>Director</th>
+    <th>Character name</th>
     <th></th>
 
   </tr>
-  <% @matching_movies.each do |a_movie|  %>
-     <tr>
-    <td><%= a_movie.title %></td>
-    <td><%= a_movie.year %></td>
-    <td><%= a_movie.director_id %></td>
-    <td><%= a_movie.name %></td>
-    <td>
-      <a href="/movies/<%= a_movie.id %>">Show details</a>
-    </td>
-
-  </tr>
+  <% @matching_characters.each do |a_character|  %>
+    <tr>
+      <td>
+        <% @match_movies = Movie.where({ :id => a_character.movie_id }) %>
+        <% specific_movie = @match_movies.at(0) %>
+        <%= specific_movie.title  %>
+      </td>
+      <td><%= specific_movie.year %></td>
+      <td>
+        <% matching_records = Director.where({ :id => specific_movie.director_id })  %>
+        <%= matching_records.at(0).name %> 
+      </td>
+      <td><%= a_character.name %></td>
+      <td>
+        <a href="/movies/<%= specific_movie.id %>">Show details</a>
+      </td>
+   </tr>
   <% end %>
 
-</table> -->
+</table> 
